@@ -3,3 +3,42 @@
 # TP4 - arcade
 
 import arcade
+rayon_cercle = 20
+position_x = 3
+position_y = 3
+SCREEN_WIDTH = 800
+cercle_x = 300
+cercle_y = 200
+SCREEN_HEIGHT = 600
+
+class MyGame(arcade.Window):
+    def __init__(self, width, height, title):
+        super().__init__(width, height, title)
+
+    def main():
+        window = MyGame(640, 480, "Drawing Example")
+        arcade.run()
+
+    def on_update(self, delta_time: float):
+        global cercle_x, cercle_y
+        cercle_x += position_x
+        cercle_y += position_y
+        if cercle_x < rayon_cercle:
+            pass
+        if cercle_x > SCREEN_WIDTH - rayon_cercle:
+            pass
+        if cercle_y < rayon_cercle:
+            pass
+        if cercle_y > SCREEN_HEIGHT - rayon_cercle:
+            pass
+        if cercle_x < rayon_cercle:
+            cercle_x *= -1
+
+    def on_draw(self):
+        arcade.start_render()
+        arcade.draw_circle_filled(cercle_x, cercle_y, rayon_cercle, (255, 253, 100))
+        arcade.set_background_color(arcade.color.SKY_BLUE)
+
+MyGame.main()
+MyGame.on_update()
+MyGame.on_draw()
